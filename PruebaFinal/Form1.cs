@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Datos;
+using DiscosDatos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,58 @@ namespace PruebaFinal
 {
     public partial class Form1 : Form
     {
+        private List<Articulos> listaArticulos;
         public Form1()
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            cargar();
+        } 
+
+        private void ocultarColumnas()
+        {
+            dgvMuestra.Columns["Codigo"].Visible = false;
+
+        }
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                picbox.Load(imagen);
+            }
+            catch (Exception)
+            {
+
+                {
+                    picbox.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoNaLFFSdD4YhW8mqgDBSWY8nHnte6ANHQWz6Lsl37yA&s");
+
+                }
+            }
+        }
+        private void cargar()
+        {
+            Metodos articulos = new Metodos();
+
+            try
+            {
+                listaArticulos = articulos.listar();
+                dgvMuestra.DataSource = listaArticulos;
+                cargarImagen(listaArticulos[0].ImagenUrl);
+                ocultarColumnas();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+
     }
 }
