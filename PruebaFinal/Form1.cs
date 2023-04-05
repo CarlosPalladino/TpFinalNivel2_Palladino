@@ -66,6 +66,20 @@ namespace PruebaFinal
 
         }
 
+        private void dgvMuestra_SelectionChanged(object sender, EventArgs e)
+        {
+            if(dgvMuestra.CurrentRow != null);
+                {
+                Articulos seleccionado = (Articulos)dgvMuestra.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.ImagenUrl);
+            }
+        }
 
+        private void Agregar_Click(object sender, EventArgs e)
+        {
+            AltaDeDiscos alta = new AltaDeDiscos();
+            alta.ShowDialog();
+            cargar();
+        }
     }
 }
