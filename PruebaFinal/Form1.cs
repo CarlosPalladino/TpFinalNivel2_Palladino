@@ -28,7 +28,8 @@ namespace PruebaFinal
         private void ocultarColumnas()
         {
             dgvMuestra.Columns["Codigo"].Visible = false;
-
+            dgvMuestra.Columns["IdMarca"].Visible=false;
+            dgvMuestra.Columns["IdCategoria"].Visible = false;
         }
         private void cargarImagen(string imagen)
         {

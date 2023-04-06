@@ -26,7 +26,8 @@ namespace PruebaFinal
             try
             {
                // cboCategoria.DataSource = categoria.listar();
-                cboMarca.DataSource = marca.listar();
+               cboMarca.DataSource = marca.listar();
+            //    cboCategoria.DataSource = marca.listar();
             }
             catch (Exception ex) 
             {
@@ -49,7 +50,7 @@ namespace PruebaFinal
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.ImagenUrl = txtImagen.Text;
                 articulo.Codigo = txtCodigo.Text;
-             //   articulo.IdMarca = cboMarca.SelectedItem;
+             // articulo.IdMarca = cboMarca.SelectedItem;
 
 
                 metodos.agregar(articulo);

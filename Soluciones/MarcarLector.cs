@@ -10,17 +10,17 @@ namespace DiscosDatos
     public class MarcarLector
     {
         public List<Marcas> listar()
-         {
-            List<Marcas>  lista = new List<Marcas>();   
+        {
             AccesoDeDatos datos = new AccesoDeDatos();
+            List<Marcas> lista = new List<Marcas>();
             try
             {
-                   datos.setearConsulta("Select Id, Descripcion From MARCAS");
-                   datos.ejecutarLectura();
+                datos.setearConsulta("Select Id, Descripcion From MARCAS");
+                datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
-                    Marcas aux = new Marcas();  
+                    Marcas aux = new Marcas();
                     aux.Id = (int)datos.Lector["id"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
 
@@ -36,8 +36,8 @@ namespace DiscosDatos
             {
                 datos.cerrarLectura();
             }
-        
-         }
+
+        }
 
     }
 }
