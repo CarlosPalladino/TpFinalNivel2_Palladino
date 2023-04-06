@@ -22,12 +22,12 @@ namespace DiscosDatos
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select Id, Codigo,Nombre, Descripcion, ImagenUrl  from ARTICULOS ";
-                comando.Connection = conexion;   
+                comando.CommandText = "select a.Id, a.Codigo,a.Nombre, a.Descripcion, m.Descripcion, c.Descripcion ,a.ImagenUrl  from ARTICULOS a , Marcas m , Categorias c ";
+                comando.Connection = conexion;
                 conexion.Open();
-                lector= comando.ExecuteReader();
+                lector = comando.ExecuteReader();
 
-                while(lector.Read())
+                while (lector.Read())
                 {
                     Articulos aux = new Articulos();
                     aux.Id = (int)lector["Id"];
@@ -36,28 +36,37 @@ namespace DiscosDatos
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.ImagenUrl = (string)lector["ImagenUrl"];
 
-
                     lista.Add(aux);
                 }
-
                 conexion.Close();
                 return lista;
-            
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-
-
-
-
         }
+    public void agregar(Articulos nuevo)
+    {
+            AccesoDeDatos datos = new AccesoDeDatos();  
+        try
+        {
+                datos.setearConsulta("insert into(Nombre,Codigo,Descripcion, ImagenUrl,IdMarca,IdCategoria )values(" + nuevo.Nombre + "','" + nuevo.Codigo + "','" + nuevo.Descripcion + "',1 ,@idMarca,@idCategoria)");
+                datos.ejecutarAccion();           
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+            finally
+            {
+                datos.cerrarLectura();
+            }
     }
 
-    
-
+    }
 }
 
 

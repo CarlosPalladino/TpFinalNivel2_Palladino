@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDeDatos.cs" />
+    <Compile Include="CategoriaLector.cs" />
+    <Compile Include="MarcarLector.cs" />
     <Compile Include="Metodos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
