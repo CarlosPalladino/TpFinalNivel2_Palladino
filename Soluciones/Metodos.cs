@@ -37,15 +37,16 @@ namespace DiscosDatos
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.ImagenUrl = (string)lector["ImagenUrl"];
                     aux.Precio = (decimal)lector["Precio"];
-                     aux.IdCategoria = (int)lector["IdCategoria"];
+                    aux.IdCategoria = (int)lector["IdCategoria"];
                     aux.IdMarca = (int)lector["IdMarca"];
-                       aux.Marcas = new Marcas();
-                         aux.Marcas.Id = (int)(lector["Id"]);
-                         aux.Marcas.Descripcion = (string)lector["Marca"];
 
-                  aux.Categoria = new Categorias();
-                  aux.Categoria.Id = (int)lector["Id"];
-                  aux.Categoria.Descripcion = (string)lector["Categoria"];
+                    aux.Marcas = new Marcas();
+                    aux.Marcas.Id = (int)(lector["Id"]);
+                    aux.Marcas.Descripcion = (string)lector["Marca"];
+
+                    aux.Categoria = new Categorias();
+                    aux.Categoria.Id = (int)lector["Id"];
+                    aux.Categoria.Descripcion = (string)lector["Categoria"];
 
 
 
@@ -60,24 +61,24 @@ namespace DiscosDatos
                 throw ex;
             }
         }
-    public void agregar(Articulos nuevo)
-    {
-            AccesoDeDatos datos = new AccesoDeDatos();  
-        try
+        public void agregar(Articulos nuevo)
         {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
                 datos.setearConsulta("insert into(Nombre,Codigo,Descripcion, ImagenUrl,IdMarca,IdCategoria )values(" + nuevo.Nombre + "','" + nuevo.Codigo + "','" + nuevo.Descripcion + "',1 ,@idMarca,@idCategoria)");
-                datos.ejecutarAccion();           
-        }
-        catch (Exception)
-        {
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
 
-            throw;
-        }
+                throw;
+            }
             finally
             {
                 datos.cerrarLectura();
             }
-    }
+        }
 
     }
 }

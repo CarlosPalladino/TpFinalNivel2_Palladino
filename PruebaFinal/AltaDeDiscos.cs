@@ -21,13 +21,13 @@ namespace PruebaFinal
 
         private void AltaDeDiscos_Load(object sender, EventArgs e)
             {
-           // CategoriaLector categoria = new CategoriaLector();  
-            MarcarLector marca= new MarcarLector();
+            CategoriaLector categoria= new CategoriaLector();
+            MarcarLector marca = new MarcarLector();
             try
             {
-               // cboCategoria.DataSource = categoria.listar();
-               cboMarca.DataSource = marca.listar();
-            //    cboCategoria.DataSource = marca.listar();
+                // cboCategoria.DataSource = categoria.listar();
+                cboMarca.DataSource = marca.listar();
+               cboCategoria.DataSource = categoria.listar();
             }
             catch (Exception ex) 
             {
@@ -50,7 +50,7 @@ namespace PruebaFinal
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.ImagenUrl = txtImagen.Text;
                 articulo.Codigo = txtCodigo.Text;
-             // articulo.IdMarca = cboMarca.SelectedItem;
+          //      articulo.IdMarca = cboMarca.SelectedItem;
 
 
                 metodos.agregar(articulo);

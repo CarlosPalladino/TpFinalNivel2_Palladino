@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DiscosDatos
 {
 
-    public class AccesoDeDatos
+    public class AccesoDatos
     {
         private SqlConnection conexion;
         private SqlCommand comando;
@@ -20,9 +20,11 @@ namespace DiscosDatos
                 return lector;
             }
         }
-        public void AccesoDatos()
+
+        public  AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALAGO_DB; integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true");
+
             comando = new SqlCommand("");
         }
         public void setearConsulta(string consulta)

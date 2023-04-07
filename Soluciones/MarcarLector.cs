@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Datos;
+
 namespace DiscosDatos
 {
     public class MarcarLector
     {
         public List<Marcas> listar()
         {
-            AccesoDeDatos datos = new AccesoDeDatos();
+            AccesoDatos datos = new AccesoDatos();
             List<Marcas> lista = new List<Marcas>();
             try
             {
@@ -21,7 +22,7 @@ namespace DiscosDatos
                 while (datos.Lector.Read())
                 {
                     Marcas aux = new Marcas();
-                    aux.Id = (int)datos.Lector["id"];
+                    aux.Id = (int)datos.Lector["Id"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
 
                     lista.Add(aux);
