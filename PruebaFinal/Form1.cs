@@ -22,14 +22,23 @@ namespace PruebaFinal
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cargar();
+
+            try
+            {
+                cargar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         } 
 
         private void ocultarColumnas()
         {
-            dgvMuestra.Columns["Codigo"].Visible = false;
             dgvMuestra.Columns["IdMarca"].Visible=false;
             dgvMuestra.Columns["IdCategoria"].Visible = false;
+            dgvMuestra.Columns["ImagenUrl"].Visible = false;
         }
         private void cargarImagen(string imagen)
         {

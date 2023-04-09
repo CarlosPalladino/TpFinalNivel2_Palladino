@@ -35,8 +35,11 @@ namespace DiscosDatos
                     aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
-                    aux.ImagenUrl = (string)lector["ImagenUrl"];
-                    aux.Precio = (decimal)lector["Precio"];
+
+                    if (!(lector["ImagenUrl"] is DBNull))
+                        aux.ImagenUrl = (string)lector["ImagenUrl"];
+
+                    aux.Precio = (decimal)lector["Precio"]; // acá no lee el decimal 
                     aux.IdCategoria = (int)lector["IdCategoria"];
                     aux.IdMarca = (int)lector["IdMarca"];
 
@@ -66,13 +69,22 @@ namespace DiscosDatos
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("insert into(Nombre,Codigo,Descripcion, ImagenUrl,IdMarca,IdCategoria )values(" + nuevo.Nombre + "','" + nuevo.Codigo + "','" + nuevo.Descripcion + "',1 ,@idMarca,@idCategoria)");
+              
+                datos.setearConsulta("Insert into ARTICULOS (Codigo ,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl)values('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "',@idMarca,@idCategoria,@imagenUrl)");
+
+           //     datos.setearConsulta("Insert into POKEMONS (Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, UrlImagen)values(" + nuevo.Numero + ", '" + nuevo.Nombre + "','" + nuevo.Descripcion + "', 1,@idTipo,@idDebilidad,@urlImagen)");
+
+
+
+                datos.setearParametro("@idMarca", nuevo.Marcas.Id);
+                datos.setearParametro("@idCategoria", nuevo.Categoria.Id);
+                datos.setearParametro("@imagenUrl", nuevo.ImagenUrl);
                 datos.ejecutarAccion();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
             finally
             {

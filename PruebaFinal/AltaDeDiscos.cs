@@ -20,24 +20,23 @@ namespace PruebaFinal
         }
 
         private void AltaDeDiscos_Load(object sender, EventArgs e)
-            {
-            CategoriaLector categoria= new CategoriaLector();
+        {
+            CategoriaLector categoria = new CategoriaLector();
             MarcarLector marca = new MarcarLector();
             try
             {
-                // cboCategoria.DataSource = categoria.listar();
                 cboMarca.DataSource = marca.listar();
-               cboCategoria.DataSource = categoria.listar();
+                cboCategoria.DataSource = categoria.listar();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
-      
+
         }
-        
-    
+
+
 
         private void Agregar_Click(object sender, EventArgs e)
         {
@@ -46,11 +45,14 @@ namespace PruebaFinal
             Metodos metodos = new Metodos();
             try
             {
+                articulo.Codigo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.ImagenUrl = txtImagen.Text;
-                articulo.Codigo = txtCodigo.Text;
-          //      articulo.IdMarca = cboMarca.SelectedItem;
+           //     articulo.Precio = txtPrecio;
+            
+                articulo.Marcas = (Marcas)cboMarca.SelectedItem;
+                articulo.Categoria = (Categorias)cboCategoria.SelectedItem;
 
 
                 metodos.agregar(articulo);
@@ -59,11 +61,9 @@ namespace PruebaFinal
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
-        }
-
+        }      
         private void cargarImagen(string imagen)
         {
             try
@@ -78,6 +78,11 @@ namespace PruebaFinal
 
                 }
             }
+        }
+        private void txtImagen_Leave(object sender, EventArgs e)
+                    {
+            cargarImagen(txtImagen.Text);
+
         }
     }
 }
