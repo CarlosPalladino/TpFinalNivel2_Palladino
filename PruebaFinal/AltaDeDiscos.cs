@@ -14,11 +14,18 @@ namespace PruebaFinal
 {
     public partial class AltaDeDiscos : Form
     {
+
+        private Articulos articulo = null;
         public AltaDeDiscos()
         {
             InitializeComponent();
         }
-
+        public AltaDeDiscos(Articulos articulo)
+        {
+            this.articulo = articulo;
+            InitializeComponent();
+            Text = "Modificación";
+        }
         private void AltaDeDiscos_Load(object sender, EventArgs e)
         {
             CategoriaLector categoria = new CategoriaLector();
@@ -26,7 +33,24 @@ namespace PruebaFinal
             try
             {
                 cboMarca.DataSource = marca.listar();
+
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
+
                 cboCategoria.DataSource = categoria.listar();
+
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
+                if (articulo !=  null) {
+
+                    txtNombre.Text = articulo.Nombre;
+                    txtCodigo.Text = articulo.Codigo;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    txtImagen.Text = articulo.ImagenUrl;
+                    cargarImagen(articulo.ImagenUrl);
+                    txtPrecio.Text = articulo.Precio.ToString();              
+                }
+
             }
             catch (Exception ex)
             {
@@ -35,30 +59,37 @@ namespace PruebaFinal
             }
 
         }
-
-
-
         private void Agregar_Click(object sender, EventArgs e)
         {
             Articulos articulo = new Articulos();
-
+            
             Metodos metodos = new Metodos();
             try
             {
+                if(articulo != null)
+                
+                    articulo = new Articulos();
+                
                 articulo.Codigo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.ImagenUrl = txtImagen.Text;
                
-                articulo.Precio = decimal.Parse(txtPrecio.Text); //decimal.parse no deja ,TryParse tampoco ,  int tam
-
-           //   Console.WriteLine(txtPrecio.Text);
+                articulo.Precio = decimal.Parse(txtPrecio.Text); 
                 articulo.Marcas = (Marcas)cboMarca.SelectedItem;
                 articulo.Categoria = (Categorias)cboCategoria.SelectedItem;
 
+                if (articulo.Id != 0) { 
 
-                metodos.agregar(articulo);
-                MessageBox.Show("Agregado exitosamente");
+                metodos.modificar(articulo);
+                MessageBox.Show("Modificado exitosamente");
+
+                }
+                else
+                {
+                    metodos.agregar(articulo);
+                    MessageBox.Show("Agregado exitosamente");
+                }
                 Close();
             }
             catch (Exception ex)

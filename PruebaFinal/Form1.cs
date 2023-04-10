@@ -91,5 +91,15 @@ namespace PruebaFinal
             alta.ShowDialog();
             cargar();
         }
+
+        private void Modificar_Click(object sender, EventArgs e)
+        {
+            Articulos seleccionado;
+            seleccionado = (Articulos)dgvMuestra.CurrentRow.DataBoundItem;
+
+            AltaDeDiscos modificar = new AltaDeDiscos(seleccionado);
+            modificar.ShowDialog();
+            cargar();
+        }
     }
 }

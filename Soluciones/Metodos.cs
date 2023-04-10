@@ -73,10 +73,6 @@ namespace DiscosDatos
               
                 datos.setearConsulta("Insert into ARTICULOS (Codigo ,Nombre,Descripcion,Precio,IdMarca,IdCategoria,ImagenUrl)values('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "','"+ nuevo.Precio +"',@idMarca,@idCategoria,@imagenUrl)");
 
-           //     datos.setearConsulta("Insert into POKEMONS (Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, UrlImagen)values(" + nuevo.Numero + ", '" + nuevo.Nombre + "','" + nuevo.Descripcion + "', 1,@idTipo,@idDebilidad,@urlImagen)");
-
-
-
                 datos.setearParametro("@idMarca", nuevo.Marcas.Id);
                 datos.setearParametro("@idCategoria", nuevo.Categoria.Id);
                 datos.setearParametro("@imagenUrl", nuevo.ImagenUrl);
@@ -93,6 +89,32 @@ namespace DiscosDatos
             }
         }
 
+
+        public void modificar(Articulos articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update ARTICULOS set Nombre = @nombre, Descripcion = @desc, ImagenUrl = @img, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio Where Id = @id");
+            //  datos.setearConsulta("update POKEMONS set Numero = @numero, Nombre = @nombre, Descripcion = @desc, UrlImagen = @img, IdTipo = @idTipo, IdDebilidad = @idDebilidad Where Id = @id");
+
+                datos.setearParametro("@nombre", articulo.Nombre);
+                datos.setearParametro("@desc", articulo.Descripcion);
+                datos.setearParametro("@img", articulo.ImagenUrl);
+                datos.setearParametro("@idMarca", articulo.Marcas.Id);
+                datos.setearParametro("@idCategoria", articulo.Categoria.Id);
+                datos.setearParametro("@precio", articulo.Precio);
+                datos.setearParametro("@id", articulo.Id);
+
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
     }
 }
 
