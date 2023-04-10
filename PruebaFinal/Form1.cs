@@ -32,11 +32,11 @@ namespace PruebaFinal
 
                 MessageBox.Show(ex.ToString());
             }
-        } 
+        }
 
         private void ocultarColumnas()
         {
-            dgvMuestra.Columns["IdMarca"].Visible=false;
+            dgvMuestra.Columns["IdMarca"].Visible = false;
             dgvMuestra.Columns["IdCategoria"].Visible = false;
             dgvMuestra.Columns["ImagenUrl"].Visible = false;
         }
@@ -78,8 +78,8 @@ namespace PruebaFinal
 
         private void dgvMuestra_SelectionChanged(object sender, EventArgs e)
         {
-            if(dgvMuestra.CurrentRow != null);
-                {
+            if (dgvMuestra.CurrentRow != null) ;
+            {
                 Articulos seleccionado = (Articulos)dgvMuestra.CurrentRow.DataBoundItem;
                 cargarImagen(seleccionado.ImagenUrl);
             }
@@ -100,6 +100,30 @@ namespace PruebaFinal
             AltaDeDiscos modificar = new AltaDeDiscos(seleccionado);
             modificar.ShowDialog();
             cargar();
+        }
+
+        private void Eliminar_Click(object sender, EventArgs e)
+
+        {
+            Metodos metodo = new Metodos();
+            Articulos seleccionado;
+            try
+            {
+
+                DialogResult respuesta = MessageBox.Show("¿estas seguro de que queres eliminarlo?", "eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulos)dgvMuestra.CurrentRow.DataBoundItem;
+                    metodo.eliminar(seleccionado.Id);
+                    cargar();
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

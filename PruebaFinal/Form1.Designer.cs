@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvMuestra = new System.Windows.Forms.DataGridView();
             this.picbox = new System.Windows.Forms.PictureBox();
             this.Agregar = new System.Windows.Forms.Button();
             this.Modificar = new System.Windows.Forms.Button();
+            this.Eliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMuestra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbox)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvMuestra
             // 
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dgvMuestra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dgvMuestra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMuestra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMuestra.Location = new System.Drawing.Point(12, 48);
             this.dgvMuestra.MultiSelect = false;
@@ -80,11 +81,22 @@
             this.Modificar.UseVisualStyleBackColor = true;
             this.Modificar.Click += new System.EventHandler(this.Modificar_Click);
             // 
+            // Eliminar
+            // 
+            this.Eliminar.Location = new System.Drawing.Point(437, 335);
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Size = new System.Drawing.Size(81, 32);
+            this.Eliminar.TabIndex = 4;
+            this.Eliminar.Text = "Eliminar";
+            this.Eliminar.UseVisualStyleBackColor = true;
+            this.Eliminar.Click += new System.EventHandler(this.Eliminar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Eliminar);
             this.Controls.Add(this.Modificar);
             this.Controls.Add(this.Agregar);
             this.Controls.Add(this.picbox);
@@ -104,6 +116,7 @@
         private System.Windows.Forms.PictureBox picbox;
         private System.Windows.Forms.Button Agregar;
         private System.Windows.Forms.Button Modificar;
+        private System.Windows.Forms.Button Eliminar;
     }
 }
 

@@ -39,13 +39,13 @@ namespace DiscosDatos
                     if (!(lector["ImagenUrl"] is DBNull))
                         aux.ImagenUrl = (string)lector["ImagenUrl"];
 
-                    aux.Precio = (decimal)lector["Precio"]; // acá no lee el decimal 
+                    aux.Precio = (decimal)lector["Precio"]; 
                     Console.WriteLine("precio");
                     aux.IdCategoria = (int)lector["IdCategoria"];
                     aux.IdMarca = (int)lector["IdMarca"];
 
                     aux.Marcas = new Marcas();
-                    aux.Marcas.Id = (int)(lector["Id"]);
+                    aux.Marcas.Id = (int)lector["Id"];
                     aux.Marcas.Descripcion = (string)lector["Marca"];
 
                     aux.Categoria = new Categorias();
@@ -115,7 +115,27 @@ namespace DiscosDatos
             }
 
         }
+
+
+        public void eliminar(int Id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("Delete from Articulos where Id= @id");
+                datos.setearParametro("@id", Id);
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
     }
+
 }
 
 
