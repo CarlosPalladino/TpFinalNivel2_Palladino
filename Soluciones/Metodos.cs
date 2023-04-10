@@ -40,6 +40,7 @@ namespace DiscosDatos
                         aux.ImagenUrl = (string)lector["ImagenUrl"];
 
                     aux.Precio = (decimal)lector["Precio"]; // acá no lee el decimal 
+                    Console.WriteLine("precio");
                     aux.IdCategoria = (int)lector["IdCategoria"];
                     aux.IdMarca = (int)lector["IdMarca"];
 
@@ -70,7 +71,7 @@ namespace DiscosDatos
             try
             {
               
-                datos.setearConsulta("Insert into ARTICULOS (Codigo ,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl)values('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "',@idMarca,@idCategoria,@imagenUrl)");
+                datos.setearConsulta("Insert into ARTICULOS (Codigo ,Nombre,Descripcion,Precio,IdMarca,IdCategoria,ImagenUrl)values('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "','"+ nuevo.Precio +"',@idMarca,@idCategoria,@imagenUrl)");
 
            //     datos.setearConsulta("Insert into POKEMONS (Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, UrlImagen)values(" + nuevo.Numero + ", '" + nuevo.Nombre + "','" + nuevo.Descripcion + "', 1,@idTipo,@idDebilidad,@urlImagen)");
 

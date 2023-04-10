@@ -49,8 +49,10 @@ namespace PruebaFinal
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.ImagenUrl = txtImagen.Text;
-           //     articulo.Precio = txtPrecio;
-            
+               
+                articulo.Precio = decimal.Parse(txtPrecio.Text); //decimal.parse no deja ,TryParse tampoco ,  int tam
+
+           //   Console.WriteLine(txtPrecio.Text);
                 articulo.Marcas = (Marcas)cboMarca.SelectedItem;
                 articulo.Categoria = (Categorias)cboCategoria.SelectedItem;
 

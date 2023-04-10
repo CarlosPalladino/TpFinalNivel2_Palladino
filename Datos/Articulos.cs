@@ -16,7 +16,7 @@ namespace Datos
         public string Codigo { get; set; }
         public string ImagenUrl { get; set; }
 
-        public string Precio { get; set; }
+        public decimal Precio { get; set; }
         public int IdMarca { get; set; }
         public int IdCategoria { get; set; }
 

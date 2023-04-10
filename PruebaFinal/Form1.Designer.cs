@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvMuestra = new System.Windows.Forms.DataGridView();
             this.picbox = new System.Windows.Forms.PictureBox();
             this.Agregar = new System.Windows.Forms.Button();
@@ -37,6 +38,9 @@
             // 
             // dgvMuestra
             // 
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dgvMuestra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMuestra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMuestra.Location = new System.Drawing.Point(12, 48);
             this.dgvMuestra.MultiSelect = false;
