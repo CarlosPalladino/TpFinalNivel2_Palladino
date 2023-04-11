@@ -37,6 +37,7 @@ namespace PruebaFinal
         private void ocultarColumnas()
         {
             dgvMuestra.Columns["IdMarca"].Visible = false;
+            dgvMuestra.Columns["Id"].Visible = false;
             dgvMuestra.Columns["IdCategoria"].Visible = false;
             dgvMuestra.Columns["ImagenUrl"].Visible = false;
         }
@@ -78,7 +79,7 @@ namespace PruebaFinal
 
         private void dgvMuestra_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvMuestra.CurrentRow != null) ;
+            if (dgvMuestra.CurrentRow != null)
             {
                 Articulos seleccionado = (Articulos)dgvMuestra.CurrentRow.DataBoundItem;
                 cargarImagen(seleccionado.ImagenUrl);
@@ -124,6 +125,26 @@ namespace PruebaFinal
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+     
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulos> lista;
+            string filtro = txtFiltro.Text;
+            if (filtro.Length >= 3)
+            {
+                lista = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Marcas.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                lista = listaArticulos;
+            }
+
+            dgvMuestra.DataSource = null;
+            dgvMuestra.DataSource = lista;
+            ocultarColumnas();
         }
     }
 }

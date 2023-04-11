@@ -34,6 +34,8 @@
             this.Agregar = new System.Windows.Forms.Button();
             this.Modificar = new System.Windows.Forms.Button();
             this.Eliminar = new System.Windows.Forms.Button();
+            this.Filltro = new System.Windows.Forms.Label();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMuestra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbox)).BeginInit();
             this.SuspendLayout();
@@ -44,7 +46,7 @@
             dataGridViewCellStyle1.NullValue = null;
             this.dgvMuestra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMuestra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMuestra.Location = new System.Drawing.Point(12, 48);
+            this.dgvMuestra.Location = new System.Drawing.Point(12, 67);
             this.dgvMuestra.MultiSelect = false;
             this.dgvMuestra.Name = "dgvMuestra";
             this.dgvMuestra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -54,7 +56,7 @@
             // 
             // picbox
             // 
-            this.picbox.Location = new System.Drawing.Point(558, 48);
+            this.picbox.Location = new System.Drawing.Point(558, 67);
             this.picbox.Name = "picbox";
             this.picbox.Size = new System.Drawing.Size(230, 264);
             this.picbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -63,7 +65,7 @@
             // 
             // Agregar
             // 
-            this.Agregar.Location = new System.Drawing.Point(84, 335);
+            this.Agregar.Location = new System.Drawing.Point(15, 375);
             this.Agregar.Name = "Agregar";
             this.Agregar.Size = new System.Drawing.Size(103, 31);
             this.Agregar.TabIndex = 2;
@@ -73,7 +75,7 @@
             // 
             // Modificar
             // 
-            this.Modificar.Location = new System.Drawing.Point(262, 335);
+            this.Modificar.Location = new System.Drawing.Point(193, 375);
             this.Modificar.Name = "Modificar";
             this.Modificar.Size = new System.Drawing.Size(96, 30);
             this.Modificar.TabIndex = 3;
@@ -83,7 +85,7 @@
             // 
             // Eliminar
             // 
-            this.Eliminar.Location = new System.Drawing.Point(437, 335);
+            this.Eliminar.Location = new System.Drawing.Point(368, 375);
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.Size = new System.Drawing.Size(81, 32);
             this.Eliminar.TabIndex = 4;
@@ -91,11 +93,30 @@
             this.Eliminar.UseVisualStyleBackColor = true;
             this.Eliminar.Click += new System.EventHandler(this.Eliminar_Click);
             // 
+            // Filltro
+            // 
+            this.Filltro.AutoSize = true;
+            this.Filltro.Location = new System.Drawing.Point(193, 24);
+            this.Filltro.Name = "Filltro";
+            this.Filltro.Size = new System.Drawing.Size(31, 13);
+            this.Filltro.TabIndex = 5;
+            this.Filltro.Text = "Filltro";
+            // 
+            // txtFiltro
+            // 
+            this.txtFiltro.Location = new System.Drawing.Point(230, 21);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(194, 20);
+            this.txtFiltro.TabIndex = 6;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtFiltro);
+            this.Controls.Add(this.Filltro);
             this.Controls.Add(this.Eliminar);
             this.Controls.Add(this.Modificar);
             this.Controls.Add(this.Agregar);
@@ -107,6 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvMuestra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -117,6 +139,8 @@
         private System.Windows.Forms.Button Agregar;
         private System.Windows.Forms.Button Modificar;
         private System.Windows.Forms.Button Eliminar;
+        private System.Windows.Forms.Label Filltro;
+        private System.Windows.Forms.TextBox txtFiltro;
     }
 }
 
