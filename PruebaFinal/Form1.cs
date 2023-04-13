@@ -25,6 +25,11 @@ namespace PruebaFinal
 
             try
             {
+                cboCampo.Items.Add("Nombre");
+                cboCampo.Items.Add("Precio");
+                cboCampo.Items.Add("Descripcion");
+
+
                 cargar();
             }
             catch (Exception ex)
@@ -41,6 +46,8 @@ namespace PruebaFinal
             dgvMuestra.Columns["IdCategoria"].Visible = false;
             dgvMuestra.Columns["ImagenUrl"].Visible = false;
         }
+
+
         private void cargarImagen(string imagen)
         {
             try
@@ -126,9 +133,6 @@ namespace PruebaFinal
                 MessageBox.Show(ex.ToString());
             }
         }
-
-     
-
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Articulos> lista;
@@ -145,6 +149,94 @@ namespace PruebaFinal
             dgvMuestra.DataSource = null;
             dgvMuestra.DataSource = lista;
             ocultarColumnas();
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if (opcion == "Precio")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+
+
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Empieza con..");
+                cboCriterio.Items.Add("Termina con..");
+                cboCriterio.Items.Add("Contiene ..");
+            }
+        }
+
+        private void Filtrar_Click(object sender, EventArgs e)
+
+        {
+            Metodos metodo = new Metodos();
+            try
+            {
+                if (validarFiltro())
+                    return;
+
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtPrecio.Text;
+
+                dgvMuestra.DataSource = metodo.Filtro(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private bool validarFiltro()
+        {
+            if (cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show(" ¡ Seleccionado un Campo por favor !");
+            }
+            if (cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show(" ¡ Seleccionado un Criterio, por favor !");
+                return true;
+            }
+            if (cboCampo.SelectedItem.ToString() == "Precio") // aca problema
+                if (string.IsNullOrEmpty(txtPrecio.Text))
+                {
+                    MessageBox.Show("Selecciona un Precio ");
+                    return true;
+                }
+            
+
+               if (!(numerosDecimales(txtPrecio.Text)))
+                {
+                    MessageBox.Show("Solo Números con . ");
+                  return true;
+                }
+            
+
+            return false;
+        }
+        private bool numerosDecimales(string cadena)
+        {
+            foreach (char caracter in cadena)
+
+            {
+                if (!(char.IsDigit(caracter)))        // no hay numbers , no son digits,. IsPunctuation, IsSeparator tampoco // tiene que ser Numero entero y/o nro con 
+                    return false;
+            }
+            return true;
+        }
+
+
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            cargar();
         }
     }
 }

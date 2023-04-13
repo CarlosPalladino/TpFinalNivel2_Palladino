@@ -46,6 +46,7 @@
             this.cboMarca = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.NuevaFoto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picbox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(133, 52);
+            this.txtNombre.Location = new System.Drawing.Point(103, 46);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(142, 20);
             this.txtNombre.TabIndex = 0;
@@ -78,7 +79,7 @@
             // Nombre
             // 
             this.Nombre.AutoSize = true;
-            this.Nombre.Location = new System.Drawing.Point(55, 59);
+            this.Nombre.Location = new System.Drawing.Point(25, 53);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(44, 13);
             this.Nombre.TabIndex = 3;
@@ -87,7 +88,7 @@
             // Codigo
             // 
             this.Codigo.AutoSize = true;
-            this.Codigo.Location = new System.Drawing.Point(55, 176);
+            this.Codigo.Location = new System.Drawing.Point(25, 170);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(40, 13);
             this.Codigo.TabIndex = 4;
@@ -96,7 +97,7 @@
             // Descripcion
             // 
             this.Descripcion.AutoSize = true;
-            this.Descripcion.Location = new System.Drawing.Point(55, 92);
+            this.Descripcion.Location = new System.Drawing.Point(25, 86);
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.Size = new System.Drawing.Size(63, 13);
             this.Descripcion.TabIndex = 5;
@@ -105,7 +106,7 @@
             // Imagen
             // 
             this.Imagen.AutoSize = true;
-            this.Imagen.Location = new System.Drawing.Point(55, 134);
+            this.Imagen.Location = new System.Drawing.Point(25, 128);
             this.Imagen.Name = "Imagen";
             this.Imagen.Size = new System.Drawing.Size(42, 13);
             this.Imagen.TabIndex = 6;
@@ -113,14 +114,14 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(133, 85);
+            this.txtDescripcion.Location = new System.Drawing.Point(103, 79);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(142, 20);
             this.txtDescripcion.TabIndex = 1;
             // 
             // txtImagen
             // 
-            this.txtImagen.Location = new System.Drawing.Point(133, 127);
+            this.txtImagen.Location = new System.Drawing.Point(103, 121);
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(142, 20);
             this.txtImagen.TabIndex = 2;
@@ -128,7 +129,7 @@
             // 
             // picbox
             // 
-            this.picbox.Location = new System.Drawing.Point(338, 65);
+            this.picbox.Location = new System.Drawing.Point(295, 65);
             this.picbox.Name = "picbox";
             this.picbox.Size = new System.Drawing.Size(205, 221);
             this.picbox.TabIndex = 10;
@@ -136,7 +137,7 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(133, 293);
+            this.txtPrecio.Location = new System.Drawing.Point(103, 287);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(100, 20);
             this.txtPrecio.TabIndex = 6;
@@ -144,7 +145,7 @@
             // Precio
             // 
             this.Precio.AutoSize = true;
-            this.Precio.Location = new System.Drawing.Point(55, 300);
+            this.Precio.Location = new System.Drawing.Point(25, 294);
             this.Precio.Name = "Precio";
             this.Precio.Size = new System.Drawing.Size(37, 13);
             this.Precio.TabIndex = 12;
@@ -153,7 +154,7 @@
             // Numero
             // 
             this.Numero.AutoSize = true;
-            this.Numero.Location = new System.Drawing.Point(58, 35);
+            this.Numero.Location = new System.Drawing.Point(28, 29);
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(0, 13);
             this.Numero.TabIndex = 13;
@@ -161,7 +162,7 @@
             // Marca
             // 
             this.Marca.AutoSize = true;
-            this.Marca.Location = new System.Drawing.Point(55, 218);
+            this.Marca.Location = new System.Drawing.Point(25, 212);
             this.Marca.Name = "Marca";
             this.Marca.Size = new System.Drawing.Size(37, 13);
             this.Marca.TabIndex = 14;
@@ -170,7 +171,7 @@
             // Categoria
             // 
             this.Categoria.AutoSize = true;
-            this.Categoria.Location = new System.Drawing.Point(55, 253);
+            this.Categoria.Location = new System.Drawing.Point(25, 247);
             this.Categoria.Name = "Categoria";
             this.Categoria.Size = new System.Drawing.Size(52, 13);
             this.Categoria.TabIndex = 15;
@@ -180,7 +181,7 @@
             // 
             this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(133, 210);
+            this.cboMarca.Location = new System.Drawing.Point(103, 204);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(121, 21);
             this.cboMarca.TabIndex = 4;
@@ -189,23 +190,34 @@
             // 
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(133, 245);
+            this.cboCategoria.Location = new System.Drawing.Point(103, 239);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(121, 21);
             this.cboCategoria.TabIndex = 5;
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(133, 169);
+            this.txtCodigo.Location = new System.Drawing.Point(103, 163);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(142, 20);
             this.txtCodigo.TabIndex = 3;
+            // 
+            // NuevaFoto
+            // 
+            this.NuevaFoto.Location = new System.Drawing.Point(251, 123);
+            this.NuevaFoto.Name = "NuevaFoto";
+            this.NuevaFoto.Size = new System.Drawing.Size(25, 22);
+            this.NuevaFoto.TabIndex = 16;
+            this.NuevaFoto.Text = "+";
+            this.NuevaFoto.UseVisualStyleBackColor = true;
+            this.NuevaFoto.Click += new System.EventHandler(this.NuevaFoto_Click);
             // 
             // AltaDeDiscos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 416);
+            this.Controls.Add(this.NuevaFoto);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.cboMarca);
@@ -254,5 +266,6 @@
         private System.Windows.Forms.ComboBox cboMarca;
         private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Button NuevaFoto;
     }
 }
