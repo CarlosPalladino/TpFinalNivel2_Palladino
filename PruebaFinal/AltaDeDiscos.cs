@@ -24,8 +24,8 @@ namespace PruebaFinal
         }
         public AltaDeDiscos(Articulos articulo)
         {
-            this.articulo = articulo;
             InitializeComponent();
+            this.articulo = articulo;
             Text = "Modificación";
         }
         private void AltaDeDiscos_Load(object sender, EventArgs e)
@@ -64,12 +64,11 @@ namespace PruebaFinal
         }
         private void Agregar_Click(object sender, EventArgs e)
         {
-            Articulos articulo = new Articulos();
 
             Metodos metodos = new Metodos();
             try
             {
-                if (articulo != null)
+                if (articulo == null)
 
                     articulo = new Articulos();
 
@@ -128,7 +127,7 @@ namespace PruebaFinal
         private void NuevaFoto_Click(object sender, EventArgs e)
         {
             archivo = new OpenFileDialog();
-            archivo.Filter = "jpg|*.jpg |png|*.png";
+            archivo.Filter = "jpg|*.jpg;| png|*.PNG;| jepg| *.jepg";
             if (archivo.ShowDialog() == DialogResult.OK)
             {
                 txtImagen.Text = archivo.FileName;
